@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -9,9 +10,9 @@ export function Hero() {
   const [isMobile, setIsMobile] = useState(false)
   
   const rotatingTexts = [
-    'Aayush Kumar',
-    'Software Developer',
-    'Full Stack Developer',
+    ['Aayush', 'Kumar'],
+    ['Software', 'Developer'],
+    ['Full Stack', 'Developer'],
   ]
 
   useEffect(() => {
@@ -103,49 +104,84 @@ export function Hero() {
         </div>
       )}
 
-      <div className="max-w-3xl mx-auto text-center relative z-10">
-        <div className="mb-6 inline-block animate-fade-in-up">
-          <span className="text-primary text-xs sm:text-sm font-mono uppercase tracking-wider animate-glow-pulse px-3 sm:px-4 py-2 rounded-full border border-primary/20">
-            <span className="hidden sm:inline">System Engineer at CGI</span>
-            <span className="sm:hidden">CGI Engineer</span>
-          </span>
-        </div>
-        
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 text-pretty animate-slide-in-left min-h-[100px] sm:min-h-[120px] md:min-h-[160px] flex flex-wrap items-center justify-center gap-x-2 sm:gap-x-3" style={{ animationDelay: '0.2s' }}>
-          <span>Hi, I&apos;m</span>
-          <span className="inline-block min-w-[240px] sm:min-w-[320px] md:min-w-[600px] text-center">
-            <span 
-              className="bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent inline-block transition-all duration-500 ease-in-out"
-              style={{
-                opacity: isAnimating ? 0 : 1,
-                transform: isAnimating ? 'translateY(-10px)' : 'translateY(0)',
-              }}
-            >
-              {rotatingTexts[currentTextIndex]}
-            </span>
-          </span>
-        </h1>
-        
-        <p className="text-lg sm:text-xl md:text-2xl text-foreground/70 mb-8 text-pretty animate-slide-in-right px-2" style={{ animationDelay: '0.4s' }}>
-          Full Stack Developer specializing in cloud technologies, AI integration, and building scalable solutions with React, Node.js, and AWS.
-        </p>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            <div className="mb-6 inline-block animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <span className="text-primary text-xs sm:text-sm font-mono uppercase tracking-wider animate-glow-pulse px-3 sm:px-4 py-2 rounded-full border border-primary/20">
+                <span className="hidden sm:inline">System Engineer at CGI</span>
+                <span className="sm:hidden">CGI Engineer</span>
+              </span>
+            </div>
+            
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-pretty animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
+              <span className="block mb-2">Hi, I&apos;m</span>
+              <span 
+                className="block bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent transition-all duration-500 ease-in-out"
+                style={{
+                  opacity: isAnimating ? 0 : 1,
+                  transform: isAnimating ? 'translateY(-10px)' : 'translateY(0)',
+                }}
+              >
+                {rotatingTexts[currentTextIndex].map((line, index) => (
+                  <span key={index} className="block">{line}</span>
+                ))}
+              </span>
+            </h1>
+            
+            <p className="text-base sm:text-lg lg:text-xl text-foreground/70 mb-8 text-pretty animate-slide-in-right max-w-xl mx-auto lg:mx-0" style={{ animationDelay: '0.5s' }}>
+              Full Stack Developer specializing in cloud technologies, AI integration, and building scalable solutions with React, Node.js, and AWS.
+            </p>
 
-        <div className="flex gap-3 sm:gap-4 justify-center flex-wrap animate-fade-in-up px-2" style={{ animationDelay: '0.6s' }}>
-          <button
-            onClick={() => handleScroll('#projects')}
-            className="px-6 sm:px-8 py-3 sm:py-3.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm sm:text-base min-w-[140px]"
-          >
-            View My Work
-          </button>
-          <button
-            onClick={() => handleScroll('#contact')}
-            className="px-6 sm:px-8 py-3 sm:py-3.5 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/80 transition-all duration-300 border border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/30 transform hover:scale-105 active:scale-95 text-sm sm:text-base min-w-[140px]"
-          >
-            Get in Touch
-          </button>
+            <div className="flex gap-3 sm:gap-4 justify-center lg:justify-start flex-wrap animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+              <button
+                onClick={() => handleScroll('#projects')}
+                className="px-6 sm:px-8 py-3 sm:py-3.5 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 active:scale-95 text-sm sm:text-base min-w-[140px]"
+              >
+                View My Work
+              </button>
+              <button
+                onClick={() => handleScroll('#contact')}
+                className="px-6 sm:px-8 py-3 sm:py-3.5 bg-secondary text-secondary-foreground rounded-lg font-semibold hover:bg-secondary/80 transition-all duration-300 border border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/30 transform hover:scale-105 active:scale-95 text-sm sm:text-base min-w-[140px]"
+              >
+                Get in Touch
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column - Profile Picture */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in-up">
+            <div className="relative group">
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 rounded-full bg-linear-to-r from-primary via-accent to-primary animate-spin-slow opacity-75 blur-sm group-hover:opacity-100 transition-opacity duration-300"
+                style={{ 
+                  animation: 'spin 8s linear infinite',
+                  padding: '3px'
+                }}
+              ></div>
+              
+              {/* Image container */}
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full overflow-hidden border-4 border-background shadow-2xl group-hover:scale-105 transition-all duration-300">
+                <Image
+                  src="/Aayush.png"
+                  alt="Aayush Kumar"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  priority
+                />
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              {/* Floating ring animation */}
+              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-ping opacity-20"></div>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-border animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
+        {/* Scroll indicator */}
+        <div className="mt-12 sm:mt-16 lg:mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
           <p className="text-foreground/50 text-xs sm:text-sm mb-4">Scroll to explore</p>
           <div className="flex justify-center">
             <div className="animate-bounce">
