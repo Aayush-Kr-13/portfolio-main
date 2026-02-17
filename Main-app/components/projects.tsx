@@ -1,8 +1,11 @@
 'use client'
 
 import { ExternalLink, Github } from 'lucide-react'
+import { useState } from 'react'
 
 export function Projects() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
   const projects = [
     {
       title: 'Cricket Stats Predictor',
@@ -74,10 +77,21 @@ export function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-background rounded-lg p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 transform hover:scale-[1.02] hover:-translate-y-1 animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className="group relative bg-background rounded-xl p-6 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in-up overflow-hidden"
+              style={{ 
+                animationDelay: `${index * 0.1}s`,
+                transform: hoveredIndex === index ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
+              }}
             >
-              <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+              </div>
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-3">

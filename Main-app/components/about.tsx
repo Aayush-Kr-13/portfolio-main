@@ -23,6 +23,7 @@ const stats = [
 
 export function About() {
   const [isVisible, setIsVisible] = useState(false)
+  const [counters, setCounters] = useState<{ [key: string]: number }>({})
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -30,6 +31,10 @@ export function About() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
+          // Trigger counter animations
+          stats.forEach((stat) => {
+            animateCounter(stat.value, stat.label)
+          })
         }
       },
       { threshold: 0.2 }
@@ -45,6 +50,24 @@ export function About() {
       }
     }
   }, [])
+
+  const animateCounter = (target: string, label: string) => {
+    const numericValue = parseInt(target.replace(/[^0-9]/g, ''))
+    const duration = 1500
+    const steps = 60
+    const increment = numericValue / steps
+    let current = 0
+
+    const timer = setInterval(() => {
+      current += increment
+      if (current >= numericValue) {
+        setCounters(prev => ({ ...prev, [label]: numericValue }))
+        clearInterval(timer)
+      } else {
+        setCounters(prev => ({ ...prev, [label]: Math.floor(current) }))
+      }
+    }, duration / steps)
+  }
 
   return (
     <section id="about" className="py-20 px-4 relative overflow-hidden" ref={sectionRef}>
@@ -64,14 +87,22 @@ export function About() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           {stats.map((stat, index) => {
             const Icon = stat.icon
+            const displayValue = counters[stat.label] !== undefined 
+              ? `${counters[stat.label]}${stat.value.replace(/[0-9]/g, '')}`
+              : stat.value
             return (
               <div 
                 key={stat.label}
-                className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 group"
+                className="bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Icon className={`w-8 h-8 mb-3 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
-                <p className="text-2xl md:text-3xl font-bold text-foreground mb-1">{stat.value}</p>
+                <div className="relative">
+                  <Icon className={`w-8 h-8 mb-3 ${stat.color} group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`} />
+                  <div className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300"
+                    style={{ backgroundColor: 'currentColor' }}
+                  />
+                </div>
+                <p className="text-2xl md:text-3xl font-bold text-foreground mb-1 tabular-nums">{displayValue}</p>
                 <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
               </div>
             )

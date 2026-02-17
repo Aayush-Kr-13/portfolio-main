@@ -9,11 +9,13 @@ import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { BackToTop } from '@/components/back-to-top'
+import { PageLoader } from '@/components/page-loader'
 import { Analytics } from '@vercel/analytics/next'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background text-foreground">
+      <PageLoader />
       <ScrollProgress />
       <Header />
       <Hero />
