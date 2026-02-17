@@ -7,14 +7,38 @@ export function Contact() {
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    setSubmitted(true)
-    setEmail('')
-    setMessage('')
-    setTimeout(() => setSubmitted(false), 3000)
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, message }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      setSubmitted(true)
+      setEmail('')
+      setMessage('')
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -67,14 +91,21 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse"
+                disabled={loading}
+                className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
 
               {submitted && (
                 <div className="p-4 bg-primary/10 border border-primary/30 rounded-lg text-primary text-sm animate-scale-in">
-                  ✓ Message sent! I&apos;ll get back to you soon.
+                  ✓ Message sent successfully! I&apos;ll get back to you soon.
+                </div>
+              )}
+
+              {error && (
+                <div className="p-4 bg-destructive/10 border border-destructive/30 rounded-lg text-destructive text-sm animate-scale-in">
+                  ✗ {error}
                 </div>
               )}
             </form>
