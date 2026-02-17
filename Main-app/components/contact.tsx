@@ -92,7 +92,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105 active:scale-95 animate-glow-pulse disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary hover:text-foreground border-2 border-primary hover:border-primary rounded-lg font-semibold hover:shadow-md hover:shadow-primary/15 transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>
