@@ -13,8 +13,8 @@ export function Projects() {
         'Reduced data processing time by 30%',
         'Real-time match performance dashboard',
       ],
-      link: '#',
-      github: 'https://github.com/Aayush-Kr-13',
+      link: 'https://cricket-code-hack.vercel.app/',
+      github: 'https://github.com/Aayush-Kr-13/Cricket-Code-Hack-2302',
       award: '3rd Place - Cricket Code Champions Hack',
     },
     {
@@ -26,8 +26,8 @@ export function Projects() {
         '35% boost in responsiveness with Firebase',
         'Personalized itinerary generation using OpenAI',
       ],
-      link: '#',
-      github: 'https://github.com/Aayush-Kr-13',
+      link: 'https://ai-destination-planner.vercel.app/',
+      github: 'https://github.com/Aayush-Kr-13/AI-Destination-Planner',
     },
     {
       title: 'Chessify',
@@ -38,8 +38,8 @@ export function Projects() {
         '20% improved GUI interaction speed',
         'Player rating and game history system',
       ],
-      link: '#',
-      github: 'https://github.com/Aayush-Kr-13',
+      link: 'https://devpost.com/software/chessify-czps2o?_gl=1*15m9wap*_gcl_au*MTY3NDQ4ODcxLjE3NjgzMjYyMjY.*_ga*ODQ4MDMzODA0LjE3NjgzMjYyMjc.*_ga_0YHJK3Y10M*czE3NzEzMjI3NjQkbzUkZzEkdDE3NzEzMjI3NzAkajU0JGwwJGgw',
+      github: 'https://github.com/Aayush-Kr-13/Chess-Engine-Python',
       award: '2nd Place - HackChess Hackathon',
     },
     {

@@ -106,20 +106,12 @@ export function Contact() {
                   <Github size={20} />
                 </a>
                 <a
-                  href="https://linkedin.com/in/aayush-kumar"
+                  href="https://www.linkedin.com/in/aayush-kumar-904967218/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 bg-secondary border border-border rounded-lg flex items-center justify-center text-foreground hover:text-primary hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-110 hover:rotate-12 hover:bg-primary/10"
                 >
                   <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://twitter.com/aayushkr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 bg-secondary border border-border rounded-lg flex items-center justify-center text-foreground hover:text-primary hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 transform hover:scale-110 hover:-rotate-6 hover:bg-primary/10"
-                >
-                  <Twitter size={20} />
                 </a>
               </div>
             </div>
