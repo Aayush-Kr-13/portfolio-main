@@ -51,7 +51,7 @@ export function Header() {
           className="md:hidden text-primary hover:text-primary/80 transition-all duration-300 transform hover:scale-125"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={24} className="animate-spin" style={{ animationDuration: '0.5s' }} /> : <Menu size={24} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Mobile Navigation */}
