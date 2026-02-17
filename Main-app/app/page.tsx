@@ -9,6 +9,7 @@ import { Contact } from '@/components/contact'
 import { Footer } from '@/components/footer'
 import { ScrollProgress } from '@/components/scroll-progress'
 import { BackToTop } from '@/components/back-to-top'
+import { Analytics } from '@vercel/analytics/next'
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <BackToTop />
+      <Analytics />
     </main>
   )
 }
