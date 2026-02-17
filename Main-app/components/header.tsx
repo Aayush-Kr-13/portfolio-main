@@ -68,6 +68,10 @@ export function Header() {
                   {item.name}
                 </button>
               ))}
+              <div className="pl-4 py-2 flex items-center gap-2">
+                <span className="text-foreground/70 text-sm">Theme:</span>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}
