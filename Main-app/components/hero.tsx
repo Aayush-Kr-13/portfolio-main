@@ -57,7 +57,7 @@ export function Hero() {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center pt-20 px-4 lg:px-8 xl:px-12 relative overflow-hidden">
       {/* Animated background elements that follow cursor - Desktop only */}
       {!isMobile && (
         <div className="absolute inset-0 pointer-events-none">
@@ -104,8 +104,8 @@ export function Hero() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="max-w-7xl xl:max-w-[1400px] 2xl:max-w-[1600px] mx-auto w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column - Content */}
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <div className="mb-6 inline-block animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -115,7 +115,7 @@ export function Hero() {
               </span>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-pretty animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold mb-6 text-pretty animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
               <span className="block mb-2">Hi, I&apos;m</span>
               <span 
                 className="block bg-linear-to-r from-primary to-primary/70 bg-clip-text text-transparent transition-all duration-500 ease-in-out"
@@ -130,7 +130,7 @@ export function Hero() {
               </span>
             </h1>
             
-            <p className="text-base sm:text-lg lg:text-xl text-foreground/70 mb-8 text-pretty animate-slide-in-right max-w-xl mx-auto lg:mx-0" style={{ animationDelay: '0.5s' }}>
+            <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-foreground/70 mb-8 text-pretty animate-slide-in-right max-w-xl xl:max-w-2xl mx-auto lg:mx-0" style={{ animationDelay: '0.5s' }}>
               Full Stack Developer specializing in cloud technologies, AI integration, and building scalable solutions with React, Node.js, and AWS.
             </p>
 

@@ -13,21 +13,61 @@ import { PageLoader } from '@/components/page-loader'
 import { Analytics } from '@vercel/analytics/next'
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Aayush Kumar',
+    jobTitle: 'System Engineer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'CGI',
+    },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'IIIT Dharwad',
+    },
+    url: 'https://aayushkumar.dev',
+    image: 'https://aayushkumar.dev/Aayush.png',
+    description: 'System Engineer at CGI specializing in AWS cloud solutions, full-stack development with React, Next.js, Node.js. Hackathon winner with 10+ production-ready projects.',
+    knowsAbout: [
+      'Web Development',
+      'Cloud Computing',
+      'AWS',
+      'React',
+      'Next.js',
+      'Node.js',
+      'TypeScript',
+      'Python',
+      'Full Stack Development',
+      'Software Engineering',
+    ],
+    sameAs: [
+      'https://github.com/Aayush-Kr-13',
+      'https://linkedin.com/in/aayush-kumar',
+    ],
+  }
+
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <PageLoader />
-      <ScrollProgress />
-      <Header />
-      <Hero />
-      <About />
-      <Resume />
-      <Experience />
-      <Education />
-      <Projects />
-      <Contact />
-      <Footer />
-      <BackToTop />
-      <Analytics />
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="min-h-screen bg-background text-foreground scroll-smooth">
+        <PageLoader />
+        <ScrollProgress />
+        <Header />
+        <Hero />
+        <About />
+        <Resume />
+        <Experience />
+        <Education />
+        <Projects />
+        <Contact />
+        <Footer />
+        <BackToTop />
+        <Analytics />
+      </main>
+    </>
   )
 }

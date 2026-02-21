@@ -61,25 +61,25 @@ export function Projects() {
   ]
 
   return (
-    <section id="projects" className="py-20 px-4 bg-secondary/30 relative">
+    <section id="projects" className="py-20 px-4 lg:px-8 xl:px-12 bg-secondary/30 relative">
       {/* Animated background element */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="mb-12 animate-fade-in-up">
-          <span className="text-primary text-sm font-mono uppercase tracking-wider">Projects</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-2 text-pretty">My recent work</h2>
+      <div className="max-w-6xl xl:max-w-7xl mx-auto relative z-10">
+        <div className="mb-12 lg:mb-16 animate-fade-in-up">
+          <span className="text-primary text-sm lg:text-base font-mono uppercase tracking-wider">Projects</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-2 text-pretty">My recent work</h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative bg-background rounded-xl p-6 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in-up overflow-hidden"
+              className="group relative bg-background rounded-xl p-6 sm:p-8 lg:p-10 border-2 border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in-up overflow-hidden"
               style={{ 
                 animationDelay: `${index * 0.1}s`,
                 transform: hoveredIndex === index ? 'translateY(-8px) scale(1.02)' : 'translateY(0) scale(1)',
@@ -94,67 +94,67 @@ export function Projects() {
               </div>
 
               <div className="relative z-10">
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                <div className="flex items-start justify-between mb-3 lg:mb-4">
+                  <h3 className="text-xl lg:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   {project.award && (
-                    <div className="ml-2 px-2 py-1 bg-amber-500/10 border border-amber-500/30 rounded text-xs text-amber-500 whitespace-nowrap" title={project.award}>
+                    <div className="ml-2 px-2 py-1 lg:px-3 lg:py-1.5 bg-amber-500/10 border border-amber-500/30 rounded text-xs lg:text-sm text-amber-500 whitespace-nowrap" title={project.award}>
                       🏆
                     </div>
                   )}
                 </div>
 
                 {project.award && (
-                  <p className="text-xs text-amber-500 mb-2 font-medium">{project.award}</p>
+                  <p className="text-xs lg:text-sm text-amber-500 mb-2 lg:mb-3 font-medium">{project.award}</p>
                 )}
 
-                <p className="text-foreground/70 mb-4 group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="text-foreground/70 text-base lg:text-lg mb-4 lg:mb-6 group-hover:text-foreground/80 transition-colors duration-300">
                   {project.description}
                 </p>
 
                 {project.highlights && (
-                  <ul className="space-y-1 mb-4">
+                  <ul className="space-y-1 lg:space-y-2 mb-4 lg:mb-6">
                     {project.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-xs text-foreground/60">
-                        <span className="mt-1 w-1 h-1 rounded-full bg-primary shrink-0"></span>
+                      <li key={idx} className="flex items-start gap-2 lg:gap-3 text-sm lg:text-base text-foreground/60">
+                        <span className="mt-1 w-1 h-1 lg:w-1.5 lg:h-1.5 rounded-full bg-primary shrink-0"></span>
                         <span>{highlight}</span>
                       </li>
                     ))}
                   </ul>
                 )}
 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-2 lg:gap-3 mb-6 lg:mb-8">
                   {project.technologies.slice(0, 4).map((tech, techIndex) => (
                     <span 
                       key={tech} 
-                      className="px-2 py-1 text-xs bg-primary/10 text-primary rounded border border-primary/20 group-hover:bg-primary/20 transition-all duration-300 transform group-hover:scale-110"
+                      className="px-2 py-1 lg:px-3 lg:py-1.5 text-sm lg:text-base bg-primary/10 text-primary rounded border border-primary/20 group-hover:bg-primary/20 transition-all duration-300 transform group-hover:scale-110"
                       style={{ transitionDelay: `${techIndex * 50}ms` }}
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 4 && (
-                    <span className="px-2 py-1 text-xs text-foreground/50">
+                    <span className="px-2 py-1 lg:px-3 lg:py-1.5 text-sm lg:text-base text-foreground/50">
                       +{project.technologies.length - 4}
                     </span>
                   )}
                 </div>
 
-                <div className="flex gap-3 pt-4 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
+                <div className="flex gap-3 lg:gap-4 pt-4 lg:pt-6 border-t border-primary/10 group-hover:border-primary/30 transition-colors">
                   <a
                     href={project.link}
                     className="flex items-center gap-2 text-primary hover:text-primary/80 transition-all duration-300 transform hover:translate-x-1"
                   >
                     <ExternalLink size={18} />
-                    <span className="text-sm">View</span>
+                    <span className="text-sm lg:text-base">View</span>
                   </a>
                   <a
                     href={project.github}
                     className="flex items-center gap-2 text-primary hover:text-primary/80 transition-all duration-300 transform hover:translate-x-1"
                   >
                     <Github size={18} />
-                    <span className="text-sm">Code</span>
+                    <span className="text-sm lg:text-base">Code</span>
                   </a>
                 </div>
               </div>

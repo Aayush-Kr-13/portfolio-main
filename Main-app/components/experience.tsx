@@ -182,26 +182,26 @@ export function Experience() {
   }
 
   return (
-    <section id="experience" className="py-20 px-4 relative bg-gradient-to-b from-background via-secondary/20 to-background">
+    <section id="experience" className="py-20 px-4 lg:px-8 xl:px-12 relative bg-gradient-to-b from-background via-secondary/20 to-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
         <div className="absolute top-1/2 right-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="mb-12 animate-fade-in-up">
-          <span className="text-primary text-sm font-mono uppercase tracking-wider bg-primary/10 px-4 py-2 rounded-full inline-block">Experience</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4 text-pretty bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Where I&apos;ve worked</h2>
+      <div className="max-w-5xl xl:max-w-6xl mx-auto relative z-10">
+        <div className="mb-12 lg:mb-16 animate-fade-in-up">
+          <span className="text-primary text-sm lg:text-base font-mono uppercase tracking-wider bg-primary/10 px-4 py-2 rounded-full inline-block">Experience</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 text-pretty bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Where I&apos;ve worked</h2>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 lg:space-y-10">
           {experiences.map((exp, index) => {
             const colors = getAccentClasses(exp.accentColor)
             return (
               <div 
                 key={index} 
-                className={`border-l-4 ${colors.border} pl-8 pb-8 relative group animate-fade-in-up hover:pl-12 transition-all duration-300`}
+                className={`border-l-4 ${colors.border} pl-8 lg:pl-10 pb-8 lg:pb-10 relative group animate-fade-in-up hover:pl-12 lg:hover:pl-14 transition-all duration-300`}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
                 {/* Accent dot with gradient */}
@@ -211,38 +211,38 @@ export function Experience() {
                 <div className={`absolute -left-8 top-0 w-16 h-full bg-gradient-to-r ${exp.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg blur-xl`}></div>
 
                 {/* Content card with enhanced styling */}
-                <div className={`bg-card/50 backdrop-blur-sm rounded-xl p-6 border border-border group-hover:border-primary/50 transition-all duration-300 ${colors.glow}`}>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                <div className={`bg-card/50 backdrop-blur-sm rounded-xl p-6 sm:p-8 lg:p-10 border border-border group-hover:border-primary/50 transition-all duration-300 ${colors.glow}`}>
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 lg:mb-6">
                     <div>
-                      <h3 className={`text-2xl font-bold ${colors.text} group-hover:scale-105 transform transition-all duration-300 inline-block`}>
+                      <h3 className={`text-2xl lg:text-3xl font-bold ${colors.text} group-hover:scale-105 transform transition-all duration-300 inline-block`}>
                         {exp.role}
                       </h3>
-                      <p className="text-lg text-foreground/90 font-medium mt-1 group-hover:text-primary transition-colors duration-300">{exp.company}</p>
-                      {exp.location && <p className="text-sm text-muted-foreground mt-1">{exp.location}</p>}
+                      <p className="text-lg lg:text-xl text-foreground/90 font-medium mt-1 group-hover:text-primary transition-colors duration-300">{exp.company}</p>
+                      {exp.location && <p className="text-sm lg:text-base text-muted-foreground mt-1">{exp.location}</p>}
                     </div>
-                    <p className="text-muted-foreground font-mono text-sm mt-2 md:mt-0 px-3 py-1 bg-secondary rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">{exp.period}</p>
+                    <p className="text-muted-foreground font-mono text-sm lg:text-base mt-2 md:mt-0 px-3 py-1 lg:px-4 lg:py-2 bg-secondary rounded-full group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">{exp.period}</p>
                   </div>
 
-                  <p className="text-foreground/80 mb-4 leading-relaxed group-hover:text-foreground transition-colors duration-300">{exp.description}</p>
+                  <p className="text-foreground/80 text-base lg:text-lg mb-4 lg:mb-6 leading-relaxed group-hover:text-foreground transition-colors duration-300">{exp.description}</p>
 
                   {exp.highlights && (
-                    <ul className="space-y-2 mb-6">
+                    <ul className="space-y-2 lg:space-y-3 mb-6 lg:mb-8">
                       {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-foreground/70 text-sm">
-                          <span className={`mt-1 w-1.5 h-1.5 rounded-full ${colors.bg} ${colors.text} shrink-0`}></span>
+                        <li key={idx} className="flex items-start gap-2 lg:gap-3 text-foreground/70 text-sm lg:text-base">
+                          <span className={`mt-1 w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full ${colors.bg} ${colors.text} shrink-0`}></span>
                           <span className="group-hover:text-foreground/90 transition-colors duration-300">{highlight}</span>
                         </li>
                       ))}
                     </ul>
                   )}
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 lg:gap-3">
                     {exp.technologies.map((tech, techIndex) => {
                       const techColor = getTechColor(tech)
                       return (
                         <span 
                           key={tech} 
-                          className={`px-4 py-2 ${techColor.bg} ${techColor.text} rounded-lg font-medium text-sm border ${techColor.border} ${techColor.hover} transition-all duration-300 transform hover:scale-110 shadow-lg ${techColor.glow}`}
+                          className={`px-4 py-2 lg:px-5 lg:py-2.5 ${techColor.bg} ${techColor.text} rounded-lg font-medium text-sm lg:text-base border ${techColor.border} ${techColor.hover} transition-all duration-300 transform hover:scale-110 shadow-lg ${techColor.glow}`}
                           style={{ transitionDelay: `${techIndex * 50}ms` }}
                         >
                           {tech}
